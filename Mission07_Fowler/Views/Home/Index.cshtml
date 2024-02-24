@@ -1,0 +1,42 @@
+﻿﻿@{
+    ViewData["Title"] = "The Joel Hilton Film Collection";
+}
+
+@*Bootstrap*@
+<style>
+    body {
+        background-color: #f1f1f1; /* Set background color */
+    }
+
+    .container {
+        background-color: #ffffff; /* Set container background color */
+        border-radius: 10px; /* Add rounded corners to the container */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+        padding: 30px; /* Add padding to the container */
+        margin-top: 50px; /* Add margin to the top for spacing */
+        color: #333; /* Set text color */
+    }
+
+    h1 {
+        color: #007bff; /* Set heading color */
+    }
+
+    .lead {
+        margin-bottom: 20px; /* Add margin to the bottom for spacing */
+    }
+
+    img {
+        max-width: 100%; /* Make images responsive */
+        height: auto; /* Prevent images from stretching */
+        margin-top: 20px; /* Add margin to the top of images */
+    }
+</style>
+
+<div class="container">
+    <h1 class="display-4">The Joel Hilton Film Collection</h1>
+    <p class="lead">Explore a curated collection of Joel Hilton's favorite films.</p>
+
+    <div class="text-center">
+        <img src="~/img/joelhiltonheadshot.jpg" alt="Joel Hilton Headshot" class="img-fluid" />
+    </div>
+</div>

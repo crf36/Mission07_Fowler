@@ -1,0 +1,53 @@
+﻿﻿@{
+    ViewData["Title"] = "Get to Know Joel";
+}
+
+<style>
+    body {
+        background-color: #f1f1f1; /* Set background color */
+    }
+
+    .container {
+        background-color: #ffffff; /* Set container background color */
+        border-radius: 10px; /* Add rounded corners to the container */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+        padding: 30px; /* Add padding to the container */
+        margin-top: 50px; /* Add margin to the top for spacing */
+        color: #333; /* Set text color */
+    }
+
+    h1 {
+        color: #007bff; /* Set header color */
+    }
+
+    p {
+        color: #555; /* Set paragraph text color */
+    }
+
+    a {
+        color: #007bff; /* Set link color */
+        text-decoration: none; /* Remove underline from links */
+    }
+
+        a:hover {
+            text-decoration: underline; /* Add underline on hover */
+        }
+</style>
+
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+
+    <div class="row">
+        <div class="col-md-6">
+            <p>Check out Joel's Quick Wits Comedy where he performs regularly: <a href="https://www.qwcomedy.com/">Quick Wits Comedy</a></p>
+            <p>Check out Joel's weekly podcast about films and pop culture called Baconsale: <a href="https://baconsale.com/">Baconsale</a></p>
+        </div>
+
+        <div class="col-md-6">
+            <p>Or click this picture below!</p>
+            <a href="https://baconsale.com/">
+                <img class="img-fluid" src="~/img/baconsalekate.jpg" alt="Baconsale Podcast" />
+            </a>
+        </div>
+    </div>
+</div>

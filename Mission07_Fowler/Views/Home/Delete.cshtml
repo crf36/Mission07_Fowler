@@ -1,0 +1,53 @@
+﻿﻿
+@model Movie
+
+@*Boostrap*@
+<style>
+    body {
+        background-color: #f1f1f1; /* Set background color */
+    }
+
+    .container {
+        background-color: #ffffff; /* Set container background color */
+        border-radius: 10px; /* Add rounded corners to the container */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+        padding: 30px; /* Add padding to the container */
+        margin-top: 50px; /* Add margin to the top for spacing */
+        color: #333; /* Set text color */
+    }
+
+    h2 {
+        color: #007bff; /* Set header color */
+    }
+
+    p {
+        margin-bottom: 20px; /* Add margin to the bottom for spacing */
+    }
+
+    button, a.btn {
+        padding: 5px 10px; /* Add padding to buttons */
+        margin-right: 5px; /* Add margin to the right for spacing between buttons */
+    }
+
+    .btn-danger {
+        background-color: #dc3545; /* Set Delete button background color */
+        color: #ffffff; /* Set Delete button text color */
+    }
+
+    .btn-info {
+        background-color: #007bff; /* Set Cancel button background color */
+        color: #ffffff; /* Set Cancel button text color */
+    }
+</style>
+
+<div class="container">
+    <h2>Confirm Movie Deletion</h2>
+    <p>Movie Title: @Model.Title</p>
+
+    <form method="post">
+        <input type="hidden" asp-for="MovieId" /> @*Need MovieId to delete record*@
+
+        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+        <a class="btn btn-sm btn-info" asp-controller="Home" asp-action="ViewMovies">Cancel</a>
+    </form>
+</div>

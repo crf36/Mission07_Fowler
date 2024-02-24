@@ -1,0 +1,128 @@
+﻿﻿
+@{
+    ViewData["Title"] = "Movies";
+}
+
+@model Movie
+
+@*Bootstrap*@
+<style>
+    body {
+        background-color: #f1f1f1; /* Set background color */
+    }
+
+    .container {
+        background-color: #ffffff; /* Set container background color */
+        border-radius: 10px; /* Add rounded corners to the container */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+        padding: 30px; /* Add padding to the container */
+        margin-top: 50px; /* Add margin to the top for spacing */
+        color: #333; /* Set text color */
+    }
+
+    h1 {
+        color: #007bff; /* Set header color */
+    }
+
+    label {
+        color: #555; /* Set label text color */
+    }
+
+    input, select, textarea {
+        width: 100%; /* Make input elements full width */
+        padding: 10px; /* Add padding to input elements */
+        margin-bottom: 15px; /* Add margin to the bottom for spacing */
+        border: 1px solid #ccc; /* Add a subtle border */
+        border-radius: 5px; /* Add rounded corners to input elements */
+        box-sizing: border-box; /* Include padding and border in element's total width and height */
+    }
+
+    button {
+        background-color: #007bff; /* Set button background color */
+        color: #ffffff; /* Set button text color */
+        padding: 10px 20px; /* Add padding to the button */
+        border: none; /* Remove button border */
+        border-radius: 5px; /* Add rounded corners to the button */
+        cursor: pointer; /* Add pointer cursor on hover */
+    }
+
+        button:hover {
+            background-color: #0056b3; /* Set button background color on hover */
+        }
+
+    textarea {
+        resize: vertical; /* Allow vertical resizing of the textarea */
+    }
+
+    .validation-summary-errors {
+        color: #dc3545; /* Set validation error message color */
+        font-style: italic; /* Set italic style for error messages */
+        text-align: left; /* Align error messages to the left */
+        font-size: 12px; /* Set font size for error messages */
+        margin-top: 20px; /* Add margin to the top for spacing */
+    }
+</style>
+
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+
+    <form method="post">
+        <input type="hidden" asp-for="MovieId" /> @*ID needed to bring in a new or existing record*@
+
+        <label asp-for="CategoryId">Category</label>
+        <select asp-for="CategoryId">
+            <option value="" selected disabled>Select a Category</option>
+            @foreach (Category c in ViewBag.Categories) // Pulls in the list of categories from the categories table
+            {
+                <option value="@c.CategoryId">@c.CategoryName</option>
+            }
+        </select>
+
+        <label asp-for="Title">Title*</label>
+        <input asp-for="Title" />
+
+        <label asp-for="Year">Year*</label>
+        <input asp-for="Year" />
+
+        <label asp-for="Director">Director</label>
+        <input asp-for="Director" />
+
+        <label asp-for="Rating">Rating</label>
+        <select asp-for="Rating">
+            <option value="" selected disabled hidden>Select an option</option>
+            <option value="G">G</option>
+            <option value="PG">PG</option>
+            <option value="PG-13">PG-13</option>
+            <option value="R">R</option>
+            <option value="NR">NR</option>
+            <option value="TV-14">TV-14</option>
+            <option value="UR">UR</option>
+            <option value="TV-PG">TV-PG</option>
+            <option value="TV-Y7">TV-Y7</option>
+        </select>
+
+        <label asp-for="Edited">Edited*</label>
+        <select asp-for="Edited">
+            <option value="" disabled selected>Select</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+
+        <label asp-for="LentTo">Lent To</label>
+        <input asp-for="LentTo" />
+
+        <label asp-for="CopiedToPlex">Copied to Plex*</label>
+        <select asp-for="CopiedToPlex">
+            <option value="" disabled selected>Select</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+
+        <label asp-for="Notes">Notes</label>
+        <textarea asp-for="Notes"></textarea>
+
+        <button type="submit">Submit</button>
+
+        <div asp-validation-summary="All" class="validation-summary-errors"></div>
+    </form>
+</div>

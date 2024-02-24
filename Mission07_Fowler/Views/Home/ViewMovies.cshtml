@@ -1,0 +1,86 @@
+﻿﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<Movie>
+
+@*Bootstrap*@
+<style>
+    body {
+        background-color: #f1f1f1; /* Set background color */
+    }
+
+    .container {
+        background-color: #ffffff; /* Set container background color */
+        border-radius: 10px; /* Add rounded corners to the container */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+        padding: 30px; /* Add padding to the container */
+        margin-top: 50px; /* Add margin to the top for spacing */
+        color: #333; /* Set text color */
+    }
+
+    table {
+        width: 100%; /* Make the table full width */
+        margin-bottom: 20px; /* Add margin to the bottom for spacing */
+    }
+
+    th, td {
+        padding: 10px; /* Add padding to table cells */
+        text-align: center; /* Center-align text in cells */
+    }
+
+    th {
+        background-color: #007bff; /* Set header background color */
+        color: #ffffff; /* Set header text color */
+        border: 1px solid #ddd; /* Add border to header cells */
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #f2f2f2; /* Set background color for even rows */
+    }
+
+    .btn-info, .btn-danger {
+        padding: 5px 10px; /* Add padding to buttons */
+        margin-right: 5px; /* Add margin to the right for spacing between buttons */
+    }
+</style>
+
+<div class="container">
+    <table class="table table-bordered">
+        <thead class="fw-bold">
+            <tr>
+                <td>Category</td>
+                <td>Title</td>
+                <td>Year</td>
+                <td>Director</td>
+                <td>Rating</td>
+                <td>Edited</td>
+                <td>Lent To</td>
+                <td>Copied to Plex</td>
+                <td>Notes</td>
+                <td>Edit</td>
+                <td>Delete</td>
+            </tr>
+        </thead>
+
+        @foreach (var x in Model)
+        {
+            <tbody>
+                <tr>
+                    <td>@x.Category?.CategoryName</td>
+                    <td>@x.Title</td>
+                    <td>@x.Year</td>
+                    <td>@x.Director</td>
+                    <td>@x.Rating</td>
+                    <td>@(x.Edited == 1 ? "True" : "False")</td> @*Displays 1 and 0 as true or false in the table*@
+                    <td>@x.LentTo</td>
+                    <td>@(x.CopiedToPlex == 1 ? "True" : "False")</td>
+                    <td>@x.Notes</td>
+                    <td><a class="btn btn-sm btn-info" asp-controller="Home" asp-action="EditMovie" asp-route-id="@x.MovieId">Edit</a></td>
+                    <td><a class="btn btn-sm btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@x.MovieId">Delete</a></td>
+                </tr>
+            </tbody>
+        }
+    </table>
+</div>
