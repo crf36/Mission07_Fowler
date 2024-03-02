@@ -5,15 +5,19 @@ using System.Diagnostics;
 
 namespace Mission07_Fowler.Controllers
 {
+    // Defines a class named HomeController that inherits from the Controller class
     public class HomeController : Controller
     {
+        // Holds an instance of the database context class
         private Context _context;
-        public HomeController(Context temp) // Constructor
+
+        //Constructor for the HomeController class that receives a parameter of type Context. Typically called once per request.
+        public HomeController(Context temp)
         {
             _context = temp;
         }
 
-        public IActionResult Index()
+        public IActionResult Index() // IActionResult is a type defines what should be returned. Allows for returning views, etc.
         {
             return View();
         }
@@ -24,7 +28,7 @@ namespace Mission07_Fowler.Controllers
         }
 
         [HttpGet]
-        public IActionResult MovieForm()
+        public IActionResult MovieForm() // .Categories and Movies is referring to the DbSet<> not the table
         {
             ViewBag.Categories = _context.Categories   //Creates bag of category names
                 .OrderBy(x => x.CategoryName).ToList();
@@ -55,6 +59,7 @@ namespace Mission07_Fowler.Controllers
             ViewBag.Categories = _context.Categories
                 .OrderBy(x => x.CategoryName).ToList();
 
+            // Fetches all movies including related category information
             var movies = _context.Movies
                 .Include(x => x.Category).ToList();
 

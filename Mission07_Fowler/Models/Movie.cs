@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Mission07_Fowler.Models
 {
-    public class Movie
+    public class Movie // Typically doesn't need a constructor. It is a mold for movies.
     {
         [Key]
         [Required]
